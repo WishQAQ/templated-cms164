@@ -1,0 +1,29 @@
+  <div class="sidebar">
+    <div class="barOne1">
+      <h2>{dede:field name='typeid' function="GetTopTypename(@me)" /}<span>{dede:field name='siteurl'/}</span></h2>
+      <ul class="lnav lnavp">
+        <!--列表展示.开始--> 
+        {dede:channelartlist typeid='8,9,10,11,12' currentstyle='select'}
+        <li  class="{dede:field.currentstyle/}" >
+          <div class="title1"> <a href="{dede:field name='typeurl'/}"> {dede:field name='typename'/}</a></div>
+          <div class="slist"> {dede:channel type='son' noself='yes' currentstyle="
+            <div class="li lis"><a href='~typelink~' >~typename~</a> </div>
+            " }
+            <div class="li"><a href="[field:typelink/]">·[field:typename/]</a></div>
+            {/dede:channel} </div>
+        </li>
+        {/dede:channelartlist} 
+        
+        <!--列表展示.结束-->
+      </ul>
+      <p>&nbsp;</p>
+    </div>
+    <div class="barTwo"><img src="/images/cont.jpg"/><br/>
+      <p><strong>{dede:global.cfg_mingcheng/}</strong><br />
+        电话：{dede:global.cfg_dianhua/}<br />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {dede:global.cfg_dh/}<br />
+        传真：{dede:global.cfg_chuanzhen/}<br />
+        E-mail：{dede:global.cfg_email/}<br />
+        地址：{dede:global.cfg_dizhi/}</p>
+    </div>
+  </div>

@@ -1,0 +1,105 @@
+<script type="text/javascript" src="/js/jquery-1.js"></script>
+<script type="text/javascript">$(function(){
+	$('div.mainNav ul.level1 > li').hover(
+        function () {
+            $(this).find('ul.level2:hidden').slideDown(300);
+            $(this).addClass('active')
+        },
+        function () {
+            $(this).find('ul.level2:visible').slideUp(300);
+            $(this).removeClass('active')
+            $.clearQueue();
+	});
+	$("div.mainNav ul.level2 > li, div.nav-pro-list dl dd").hover(
+        function () {
+            $(this).addClass('active')
+        },
+        function () {
+            $(this).removeClass('active')
+	});
+});
+</script>
+  <div class="top">
+    <div class="logo"><a href="/" title="{dede:global.cfg_webname/}"><img alt="{dede:global.cfg_webname/}" src="/images/logo.png"/></a></div>
+    <div class="dwy">LED照明配件<br/>
+      一站式解决方案提供商</div>
+    <div class="tel"><img src="/images/tel.jpg"/></div>
+    <div class="xlwba"><a target="_blank" rel="nofollow" href="tencent://message/?uin={dede:global.cfg_qq/}&amp;Site=在线客服&amp;Menu=no"><img src="/images/qqa.jpg"/></a><a target="_blank" href="{dede:global.cfg_weibo/}"><img src="/images/xlwb.jpg"/></a></div>
+  </div>
+  <div class="topa pngimg">
+    <div class="topnav">
+      <div class="middle nav">
+        <div class="mainNav">
+          <ul class="level1">
+          
+            <li><a href="/">网站首页</a></li>
+            <li class="">{dede:type typeid='1'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='1'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+            <li class="">{dede:type typeid='4'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='4'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+            
+            <li>{dede:type typeid='7'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul style="display:none;" class="level2 nav-pro pngimg">
+                <div class="nav-pro-list">
+         {dede:channelartlist typeid='8,9,10,11,12'}
+                  <dl class="pngimg">
+                    <dt><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></dt>
+            {dede:channel type='son' noself='yes'}
+                     <dd><a href="[field:typelink/]">[field:typename/]</a></dd>
+            {/dede:channel}
+                  </dl>
+      {/dede:channelartlist}
+                </div>
+              </ul>
+            </li>
+            
+            <li class="">{dede:type typeid='13'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='13'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+            <li class="">{dede:type typeid='17'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='17'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+            <li class="">{dede:type typeid='24'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='24'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+            <li class="">{dede:type typeid='27'}<a href="[field:typelink /]">[field:typename /]</a>{/dede:type}
+              <ul class="level2 pngimg">
+            {dede:channel type='son' noself='yes' typeid='27'}
+            <li><a href="[field:typelink/]">[field:typename/]</a></li>
+            {/dede:channel}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="serach pngimg">
+      <form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/search.php">
+           <input type="hidden" name="kwtype" value="0" />
+          <input name="keyword" class="stxt" type="text" value="输入关键字..." onfocus="this.value=''" onblur="if(this.value == '')this.value='输入关键字...'"/>
+          <input class="sbut"  type="submit" value=""/>
+        </form>
+      </div>
+    </div>
+  </div>

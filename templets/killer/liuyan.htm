@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:field.seotitle/}_{dede:global.cfg_webname/}</title>
+<meta content="{dede:field name='keywords'/}" name=keywords>
+<meta content="{dede:field name='description' function='html2text(@me)'/}" name=description>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/qq.css">
+<script src="/js/jquery.min.js"></script><script src="/js/gr.js"></script><script src="/js/jquery.qrcode.min.js"></script><script src="/js/qrcode.js"></script>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<!--[if IE 6]><script type="text/javascript" src="/js/EvPng.js"></script><script language="javascript" type="text/javascript">EvPNG.fix(".pngimg,#pics,#pngimgb");
+</script><![endif]--><!--[if lte IE 6]><style>.fixed {
+	position: fixed;
+	top: 0px;
+	z-index:100000;
+	left: 0;
+	width: 100%;
+	background:#F2F3B8;
+	box-shadow: 0 0 40px #222;
+	-webkit-box-shadow: 0 0 40px #222;
+	-moz-box-shadow: 0 0 40px #222;
+	text-align:center;
+	font-size:14px;
+}
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+* html .fixed{position:absolute;left:expression(eval(document.documentElement.scrollLeft));top:expression(eval(document.documentElement.scrollTop))}
+</style><div class="fixed">您的浏览器版本过低，可能会影响您的预览效果，请升级浏览器！！<a href="http://49.duote.com.cn/ie8-windowsxp-x86-chs.zip">点击下载</a></div><![endif]-->
+</head>
+<body>
+<!--head开始--> 
+{dede:include filename="head.htm"/} 
+<!--head结束-->
+<div id="mainPage">
+{dede:include filename="left.htm"/} 
+  <div class="content">
+  <div class="current">当前位置：{dede:field name='position'/}</div>
+  <div class="title">{dede:field name='typename'/}</div>
+    <div class="feedback">
+      <div class="contactla"><img src="/images/feed.jpg"/></div>
+      <div class="contactlc">
+<form action="/plus/diy.php" enctype="multipart/form-data" method="post">
+<input type="hidden" name="action" value="post" />
+<input type="hidden" name="diyid" value="1" />
+<input type="hidden" name="do" value="2" />
+          <table id="leavetable" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="left_L">姓名：</td>
+              <td><input name="name" type="text" maxlength="50" id="name" class="tc_c" validate=" required:true" />
+                <font color="red">*</font></td>
+            </tr>
+            <tr>
+              <td class="left_L">留言主题：</td>
+              <td><input name="title" id="title" type="text" maxlength="50" class="tc_a" validate=" required:true" />
+                <font color="red">*</font></td>
+            </tr>
+            <tr>
+              <td class="left_L">联系电话：</td>
+              <td><input name="tel" type="text" maxlength="20" id="tel" class="tc_r" validate=" required:true"  />
+                <font color="red">*</font></td>
+            </tr>
+            <tr>
+              <td class="left_L">电子邮件：</td>
+              <td><input name="email" type="text" maxlength="50" id="email" class="tc_r" validate=" required:true"  />
+                <font color="red">*</font></td>
+            </tr>
+            <tr>
+              <td class="left_L">您的留言：</td>
+              <td><textarea name="contenta" rows="10" cols="50" id="contenta" class="tz_r" validate=" required:true" ></textarea>
+                <font color="red">*</font></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+<input type="hidden" name="dede_fields" value="name,text;title,text;tel,text;email,text;contenta,multitext" />
+<input type="hidden" name="dede_fieldshash" value="5c7e6c083f85fd876f1c449a9cd4fde0" />
+              <td class="tl"><input type="submit" name="submit" value="提　交" id="submit" />
+                <input type="reset" value="重　置" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{dede:include filename="footer.htm"/} 
+</body>
+</html>

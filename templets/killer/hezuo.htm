@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:field.seotitle/}_{dede:global.cfg_webname/}</title>
+<meta content="{dede:field name='keywords'/}" name=keywords>
+<meta content="{dede:field name='description' function='html2text(@me)'/}" name=description>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/qq.css">
+<script src="/js/jquery.min.js"></script><script src="/js/gr.js"></script><script src="/js/jquery.qrcode.min.js"></script><script src="/js/qrcode.js"></script>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<!--[if IE 6]><script type="text/javascript" src="/js/EvPng.js"></script><script language="javascript" type="text/javascript">EvPNG.fix(".pngimg,#pics,#pngimgb");
+</script><![endif]--><!--[if lte IE 6]><style>.fixed {
+	position: fixed;
+	top: 0px;
+	z-index:100000;
+	left: 0;
+	width: 100%;
+	background:#F2F3B8;
+	box-shadow: 0 0 40px #222;
+	-webkit-box-shadow: 0 0 40px #222;
+	-moz-box-shadow: 0 0 40px #222;
+	text-align:center;
+	font-size:14px;
+}
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+* html .fixed{position:absolute;left:expression(eval(document.documentElement.scrollLeft));top:expression(eval(document.documentElement.scrollTop))}
+</style><div class="fixed">您的浏览器版本过低，可能会影响您的预览效果，请升级浏览器！！<a href="http://49.duote.com.cn/ie8-windowsxp-x86-chs.zip">点击下载</a></div><![endif]-->
+</head>
+<body>
+<!--head开始--> 
+{dede:include filename="head.htm"/} 
+<!--head结束-->
+<div id="mainPage">
+{dede:include filename="left.htm"/}
+<div class="content">
+  <div class="current">当前位置：{dede:field name='position'/}</div>
+  <div class="title">{dede:field name='typename'/}</div>
+  <div class="case">
+    <ul>
+    {dede:list pagesize=6}
+      <li>
+        <div class="pimg"><a href="[field:arcurl /]" title="[field:title /]"><img src="[field:litpic /]"/></a></div>
+        <div class="ptit"><span>[field:title /]</span>
+          <p>[field:description /]...<a href="[field:arcurl /]">查看详情</a></p>
+        </div>
+      </li>
+{/dede:list} 
+    </ul>
+    </div>
+    <div class="pages">
+      <ul class="pagelist">
+        {dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+      </ul>
+    </div>
+  </div>
+</div>
+{dede:include filename="footer.htm"/}
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:global.cfg_keywords/}">
+<meta name="author" content="design by www.dede58.com" />
+<meta name="description" content="{dede:global.cfg_description/}">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/qq.css">
+<script src="/js/jquery.min.js"></script><script src="/js/gr.js"></script>
+<script src="/js/jquery.qrcode.min.js"></script>
+<script src="/js/qrcode.js"></script>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<!--[if IE 6]><script type="text/javascript" src="/js/EvPng.js"></script><script language="javascript" type="text/javascript">EvPNG.fix(".pngimg,#pics,#pngimgb");
+</script><![endif]--><!--[if lte IE 6]><style>.fixed {
+	position: fixed;
+	top: 0px;
+	z-index:100000;
+	left: 0;
+	width: 100%;
+	background:#F2F3B8;
+	box-shadow: 0 0 40px #222;
+	-webkit-box-shadow: 0 0 40px #222;
+	-moz-box-shadow: 0 0 40px #222;
+	text-align:center;
+	font-size:14px;
+}
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+* html .fixed{position:absolute;left:expression(eval(document.documentElement.scrollLeft));top:expression(eval(document.documentElement.scrollTop))}
+</style><div class="fixed">您的浏览器版本过低，可能会影响您的预览效果，请升级浏览器！！<a href="http://49.duote.com.cn/ie8-windowsxp-x86-chs.zip">点击下载</a></div><![endif]--><script type="text/javascript">$(function() {
+	var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
+	var len = $("#focus ul li").length; //获取焦点图个数
+	var index = 0;
+	var picTimer;
+	
+	//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
+	var btn = "<div class='btnBg'></div><div class='btn'>";
+	for(var i=0; i < len; i++) {
+		btn += "<span></span>";
+	}
+	btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
+	$("#focus").append(btn);
+	$("#focus .btnBg").css("opacity",0.5);
+
+	//为小按钮添加鼠标滑入事件，以显示相应的内容
+	$("#focus .btn span").css("opacity",1).mouseenter(function() {
+		index = $("#focus .btn span").index(this);
+		showPics(index);
+	}).eq(0).trigger("mouseenter");
+
+	//上一页、下一页按钮透明度处理
+	$("#focus .preNext").css("opacity",1).hover(function() {
+		$(this).stop(true,false).animate({"opacity":"0.5"},300);
+	},function() {
+		$(this).stop(true,false).animate({"opacity":"1"},300);
+	});
+
+	//上一页按钮
+	$("#focus .pre").click(function() {
+		index -= 1;
+		if(index == -1) {index = len - 1;}
+		showPics(index);
+	});
+
+	//下一页按钮
+	$("#focus .next").click(function() {
+		index += 1;
+		if(index == len) {index = 0;}
+		showPics(index);
+	});
+
+	//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+	$("#focus ul").css("width",sWidth * (len));
+	
+	//鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
+	$("#focus").hover(function() {
+		clearInterval(picTimer);
+	},function() {
+		picTimer = setInterval(function() {
+			showPics(index);
+			index++;
+			if(index == len) {index = 0;}
+		},4000); //此4000代表自动播放的间隔，单位：毫秒
+	}).trigger("mouseleave");
+	
+	//显示图片函数，根据接收的index值显示相应的内容
+	function showPics(index) { //普通切换
+		var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
+		$("#focus ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
+		$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
+			/*$("#focus .btn span").stop(true,false).animate({"opacity":"0.4"},300).eq(index).stop(true,false).animate({"opacity":"1"},300); //为当前的按钮切换到选中的效果
+*/	}
+});
+
+</script>
+</head>
+<body>
+<div id="header">
+<!--head开始--> 
+{dede:include filename="head1.htm"/} 
+<!--head结束-->
+  <div class="banner"><script type="text/javascript" src="/js/jQuery.plus.extend.js"></script><script type="text/javascript" src="/js/jquery.main.js"></script>
+    <div class="indexBanner">
+      <ul class="indexBannerList">
+{dede:arclist typeid='45'}
+        <li class="indexFlashBanner0[field:global name=autoindex/] selected">
+          <article class="indexFlashContent"><a href="#" target="_blank"><img src="[field:litpic/]" alt="banner4"></a></article>
+        </li>
+{/dede:arclist}
+      </ul>
+      <nav class="indexBannerControl">
+        <div class="prevBtn"><a href="javascript:void(0)">上一张</a></div>
+        <div class="nextBtn"><a href="javascript:void(0)">下一张</a></div>
+      </nav>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">$(function(){
+	var moveHeight = 226,
+		moveTime = 200,
+		curMove = null;
+	$('.mainOne .shubiao1').hover(function (e){
+		var curLi = $(this);
+		curMove = setTimeout(function (){
+			
+			curLi.children('.d1').animate({ top: '-150px' }, moveTime);
+			curLi.children('.tu').animate({ top: '0px' }, moveTime);
+			
+		}, 200);
+	},function(e){
+		clearTimeout(curMove);
+		$(this).children('.d1').animate({ top: '0px' }, moveTime);
+		$(this).children('.tu').animate({ top: '180px'}, moveTime);
+		
+	});
+	$('.mainOne .shubiao2').hover(function (e){
+		var curLi = $(this);
+		curMove = setTimeout(function (){
+			
+			curLi.children('.d1').animate({ top: '-150px' }, moveTime);
+			curLi.children('.tu').animate({ top: '0px' }, moveTime);
+			
+		}, 200);
+	},function(e){
+		clearTimeout(curMove);
+		$(this).children('.d1').animate({ top: '0px' }, moveTime);
+		$(this).children('.tu').animate({ top: '180px'}, moveTime);
+		
+	});
+	$('.mainOne .shubiao3').hover(function (e){
+		var curLi = $(this);
+		curMove = setTimeout(function (){
+			
+			curLi.children('.d1').animate({ top: '-150px' }, moveTime);
+			curLi.children('.tu').animate({ top: '0px' }, moveTime);
+			
+		}, 200);
+	},function(e){
+		clearTimeout(curMove);
+		$(this).children('.d1').animate({ top: '0px' }, moveTime);
+		$(this).children('.tu').animate({ top: '180px'}, moveTime);
+		
+	});
+	$('.mainOne .shubiao4').hover(function (e){
+		var curLi = $(this);
+		curMove = setTimeout(function (){
+			
+			curLi.children('.d1').animate({ top: '-150px' }, moveTime);
+			curLi.children('.tu').animate({ top: '0px' }, moveTime);
+			
+		}, 200);
+	},function(e){
+		clearTimeout(curMove);
+		$(this).children('.d1').animate({ top: '0px' }, moveTime);
+		$(this).children('.tu').animate({ top: '180px'}, moveTime);
+		
+	});
+	$('.mainOne .shubiao5').hover(function (e){
+		var curLi = $(this);
+		curMove = setTimeout(function (){
+			
+			curLi.children('.d1').animate({ top: '-150px' }, moveTime);
+			curLi.children('.tu').animate({ top: '0px' }, moveTime);
+			
+		}, 200);
+	},function(e){
+		clearTimeout(curMove);
+		$(this).children('.d1').animate({ top: '0px' }, moveTime);
+		$(this).children('.tu').animate({ top: '180px'}, moveTime);
+		
+	});
+	
+	
+	
+});
+</script>
+
+    <style>
+/*全站页面样式重置开始*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td { padding:0; margin:0; font-family:Arial,SimSun; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:normal; }
+caption, th, td { font-weight:normal; text-align:left; }
+table { border-collapse:separate; border-spacing:0; }
+input, button, select { vertical-align:middle; }
+fieldset, img, abbr, acronym { border:0; }
+textarea { resize:none; overflow:auto; }
+ul, ol { list-style:none;}
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+html, body { width:100%; height:100%; font-size:12px; line-height:normal; -webkit-text-size-adjust:none; }
+html { overflow-y:auto; *overflow-y:scroll; }
+:focus { outline:0; }
+a,a:visited,a:active { background:none; color:#333; text-decoration:none; }
+a:hover { text-decoration:none;color:#f97a00; }
+/*全站页面样式重置结束*/
+.indexBanner { overflow:hidden; position:relative; width:100%; height:620px; }
+.indexBanner .indexBannerList { overflow:hidden; }
+.indexBanner .indexBannerList li { display:none; opacity:0; filter:Alpha(opacity=0); }
+.indexBanner .indexBannerList li img { display:block; width:1440px;height:620px; margin:0 auto; }
+
+.indexBanner .indexBannerList .selected { display:block; position:relative; z-index:2; opacity:1; filter:Alpha(opacity=100); }
+.indexBanner .indexBannerControl { position:absolute; top:0; left:50%; z-index:3; width:1440px; height:620px; margin:0 0 0 -710px; }
+.indexBanner .indexBannerControl .prevBtn { position:absolute; top:0; left:0; cursor:pointer; width:710px; height:620px; }
+.indexBanner .indexBannerControl .prevBtn a,
+.indexBanner .indexBannerControl .prevBtn a:visited,
+.indexBanner .indexBannerControl .prevBtn a:hover,
+.indexBanner .indexBannerControl .prevBtn a:active { position:absolute; top:217px; left:153px; width:96px; height:180px;  background:url(images/sprite.png) -500px -80px no-repeat; text-indent:-9999px; }
+.indexBanner .indexBannerControl .prevBtn a:hover,
+.indexBanner .indexBannerControl .prevBtn:hover a,
+.indexBanner .indexBannerControl .prevBtn:hover a:visited,
+.indexBanner .indexBannerControl .prevBtn:hover a:hover,
+.indexBanner .indexBannerControl .prevBtn:hover a:active { background-position:-610px -80px; }
+.indexBanner .indexBannerControl .nextBtn { position:absolute; top:0; right:0; cursor:pointer; width:710px; height:620px; }
+.indexBanner .indexBannerControl .nextBtn a,
+.indexBanner .indexBannerControl .nextBtn a:visited,
+.indexBanner .indexBannerControl .nextBtn a:hover,
+.indexBanner .indexBannerControl .nextBtn a:active { position:absolute; top:217px; right:144px; width:96px; height:180px; background:url(images/sprite.png) -500px -280px no-repeat; text-indent:-9999px; }
+.indexBanner .indexBannerControl .nextBtn a:hover,
+.indexBanner .indexBannerControl .nextBtn:hover a,
+.indexBanner .indexBannerControl .nextBtn:hover a:visited,
+.indexBanner .indexBannerControl .nextBtn:hover a:hover,
+.indexBanner .indexBannerControl .nextBtn:hover a:active { background-position:-610px -280px; }
+</style>
+
+<style>
+.mainOne{ position:relative}
+.d1{ position:relative;}
+.b1{ position:absolute; top:0px; left:0px;}
+.mainOne .tu .b1 a{ border:none; color:#FFFFFF; display:inline;}
+</style>
+<div id="main">
+  <div class="mainOne">
+    <ul>
+      <li class="shubiao1">
+        <div class="d1"><a href="/cp/jjzm"><span>家居照明光源</span><img class="pngimg" src="/images/pa.png"/></a></div>
+        <div class="tu" style="position:absolute; top:180px;"><img src="/images/ha.jpg"/>
+          <div class="b1"><a href="/cp/jjzm"><span>家居照明光源</span><img src="/images/pa.png"/></a></div>
+        </div>
+      </li>
+      <li class="shubiao2">
+        <div class="d1"><a href="/cp/ledgy"><span>LED替代性光源</span><img class="pngimg" src="/images/pb.png"/></a></div>
+        <div class="tu" style="position:absolute; top:180px;"><img src="/images/p2.jpg"/>
+          <div class="b1"><a href="/cp/ledgy"><span>LED替代性光源</span><img src="/images/pb.png"/></a></div>
+        </div>
+      </li>
+      <li class="shubiao3">
+        <div class="d1"><a href="/cp/zsdj"><span>装饰性灯具</span><img class="pngimg" src="/images/pc.png"/></a></div>
+        <div class="tu" style="position:absolute; top:180px;"><img src="/images/p3.jpg"/>
+          <div class="b1"><a href="/cp/zsdj"><span>装饰性灯具</span><img src="/images/pc.png"/></a></div>
+        </div>
+      </li>
+      
+      <li class="shubiao4">
+        <div class="d1"><a href="/cp/LEDsyzm"><span>LED商业照明</span><img class="pngimg" src="/images/pd.png"/></a></div>
+        <div class="tu" style="position:absolute; top:180px;"><img src="/images/p4.jpg"/>
+          <div class="b1"><a href="/cp/LEDsyzm"><span>LED商业照明</span><img src="/images/pd.png"/></a></div>
+        </div>
+      </li>
+      <li class="shubiao5">
+        <div class="d1"><a href="/cp/bbzm"><span>办公照明光源</span><img class="pngimg" src="/images/pe.png"/></a></div>
+        <div class="tu" style="position:absolute; top:180px;"><img src="/images/p5.jpg"/>
+          <div class="b1"><a href="/cp/bbzm"><span>办公照明光源</span><img src="/images/pe.png"/></a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+  <div class="con02 clear">
+      <div class="con02_con">
+        <div class="about_1 left">
+          <h2><span><a href="/qiyejianjie/">+查看更多</a></span><img src="/images/about.jpg" width="154" height="15" alt="公司简介" /></h2>
+          <ul>
+            <img src="/images/about_img.jpg" width="154" height="85" alt="about" />
+            <li><strong>
+              <h3>{dede:global.cfg_mingcheng/}</h3>
+              </strong></li>
+            <li>{dede:sql sql='Select content from #@__arctype where id=2'}
+      [field:content function='cn_substr(html2text(@me),300)'/]
+{/dede:sql}...<br />
+            </li>
+          </ul>
+        </div>
+        <div class="news_02 right">
+          <h2><span><a href="/xinwenzhongxin">+查看更多</a></span><img src="/images/news.jpg" width="111" height="15" alt="新闻中心" /></h2>
+          <ul>
+{dede:arclist typeid='17,24' row='5'}
+            <li><span>[[field:pubdate function="GetDateMK(@me)"/]]</span><a href="[field:arcurl/]" title="[field:title/]">[field:title/]</a></li>
+{/dede:arclist}
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+{dede:include filename="footer.htm"/} 
+</body>
+</html>

@@ -1,0 +1,1 @@
+<h2>{dede:field name='typeurl'/}<span>Technology</span></h2>

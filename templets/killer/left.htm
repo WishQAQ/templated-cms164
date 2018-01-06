@@ -1,0 +1,19 @@
+  <div class="sidebar">
+    <div class="barOne">
+          <h2>{dede:field name='typeid' function="GetTopTypename(@me)" /}<span>{dede:field name='siteurl'/}</span></h2>
+      <ul>
+ {dede:channel type='sun' currentstyle="<li><a  href='~typelink~' class='curr'>~typename~</a> </li>" }
+ <li><a href="[field:typelink/]" title="[field:typename function='substr(@me,0,15)'/]" >[field:typename function='substr(@me,0,15)'/]</a></li>
+{/dede:channel}
+       
+      </ul>
+      <p>&nbsp;</p>
+    </div>
+    <div class="barTwo"><img src="/images/cont.jpg"/><br/>
+      <p><strong>{dede:global.cfg_mingcheng/}</strong><br />
+        电话：{dede:global.cfg_dianhua/}<br />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {dede:global.cfg_dh/}<br />
+        传真：{dede:global.cfg_chuanzhen/}<br />
+        E-mail：{dede:global.cfg_email/}<br />
+        地址：{dede:global.cfg_dizhi/}</p>    </div>
+  </div>

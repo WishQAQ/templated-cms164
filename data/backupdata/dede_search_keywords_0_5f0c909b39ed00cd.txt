@@ -1,0 +1,1 @@
+INSERT INTO `dede_search_keywords` VALUES('1','搜索','搜索','8','0','1404434481','0','0');

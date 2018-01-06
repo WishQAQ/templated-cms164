@@ -1,0 +1,4 @@
+INSERT INTO `dede_datu` VALUES('184','54','','','127.0.0.1','{dede:img text=\'\' width=\'\' height=\'\'} /img/bigpic1.jpg {/dede:img}');
+INSERT INTO `dede_datu` VALUES('181','54','','','127.0.0.1','{dede:img text=\'\' width=\'1005\' height=\'539\'} /img/bigpic2.jpg {/dede:img}');
+INSERT INTO `dede_datu` VALUES('182','54','','','127.0.0.1','{dede:img text=\'\' width=\'1005\' height=\'539\'} /img/bigpic3.jpg {/dede:img}');
+INSERT INTO `dede_datu` VALUES('183','54','','','127.0.0.1','{dede:img text=\'\' width=\'\' height=\'\'} /img/bigpic1.jpg {/dede:img}');
